@@ -235,6 +235,12 @@ public abstract class MathMethods {
     
     //Method to solve for the initial velocity given the final velocity, acceleration, and time
     //Uses the formula v1=v2-at
+    
+    /**
+    * pre: final y velocity, acceleration, and time
+    * post: initial y velocity
+    * Method to return the initial y velocity
+    */
     public static double v2yatOFv1y(double v2y, double a, double t){
         //Variable to be solved for
         double v1y;
@@ -246,6 +252,12 @@ public abstract class MathMethods {
     
     //Method to solve for the acceleration given the initial velocity, final velocity, and time
     //Uses the formula a=(v2-v1)/t
+    
+    /**
+    * pre: initial y velocity, final y velocity, and time
+    * post: acceleration
+    * Method to return the acceleration
+    */
     public static double v1yv2ytOFa(double v1y, double v2y, double t){
         //Variable to be solved for
         double a;
@@ -257,6 +269,12 @@ public abstract class MathMethods {
     
     //Method to solve for the time given the initial velocity, final velocity, and acceleration
     //Uses the formula t=(v2-v1)/a
+    
+    /**
+    * pre: initial y velocity, final y velocity, and acceleration
+    * post: time
+    * Method to return the time
+    */
     public static double v1yv2yaOFt(double v1y, double v2y, double a){
         //Variable to be solved for
         double t;
@@ -268,6 +286,12 @@ public abstract class MathMethods {
     
     //Method to solve for the final velocity given the initial velocity, acceleration, and displacement
     //Uses the formula v2= square root(v1*v1+2ad)
+    
+    /**
+    * pre: initial y velocity, acceleration, and y displacement
+    * post: final y velocity
+    * Method to return the final y velocity
+    */
     public static double v1yadyOFv2y(double v1y, double a, double dy){
         //Variable to be solved for
         double v2y;
@@ -279,6 +303,12 @@ public abstract class MathMethods {
     
     //Method to solve for the initial velocity given the final velocity, acceleration, and displacement
     //Uses the formula v1= square root(v2*v2-2ad)
+    
+    /**
+    * pre: final y velocity, acceleration, and y displacement
+    * post: initial y velocity
+    * Method to return the initial y velocity
+    */
     public static double v2yadyOFv1y(double v2y, double a, double dy){
         //Variable to be solved for
         double v1y;
@@ -290,6 +320,12 @@ public abstract class MathMethods {
     
     //Method to solve for the acceleration given the initial velocity, final velocity, and displacement
     //Uses the formula a = (v2*v2-v1*v1)/2d
+    
+    /**
+    * pre: initial y velocity, final y velocity, and y displacement
+    * post: acceleration
+    * Method to return the acceleration
+    */
     public static double v1yv2ydyOFa(double v1y, double v2y, double dy){
         //Variable to be solved for
         double a;
@@ -301,6 +337,12 @@ public abstract class MathMethods {
     
     //Method to solve for the displacement given the initial velocity, final velocity, and acceleration
     //Uses the formula d = (v2*v2-v1*v1)/2a
+    
+    /**
+    * pre: initial y velocity, final y velocity, and acceleration
+    * post: y displacement
+    * Method to return the y displacement
+    */
     public static double v1yv2yaOFdy(double v1y, double v2y, double a){
         //Variable to be solved for
         double dy;
@@ -312,6 +354,12 @@ public abstract class MathMethods {
     
     //Method to solve for the displacement given the initial velocity, final velocity, and time
     //Uses the formula d=((v2+v1)/2)*t 
+    
+    /**
+    * pre: initial y velocity, final y velocity, and time
+    * post: y displacement
+    * Method to return the y displacement
+    */
     public static double v1yv2ytOFdy(double v1y, double v2y, double t){
         //Variable to be solved for
         double dy;
@@ -323,6 +371,12 @@ public abstract class MathMethods {
     
     //Method to solve for the time given the initial velocity, final velocity, and displacement
     //Uses the formula t=2d/v2+v1
+    
+    /**
+    * pre: initial y velocity, final y velocity, and y displacement
+    * post: time
+    * Method to return the time
+    */
     public static double v1yv2ydyOFt(double v1y, double v2y, double dy){
         //Variable to be solved for
         double t;
@@ -334,6 +388,12 @@ public abstract class MathMethods {
     
     //Method to solve for the final velocity given the initial velocity, displacement, and time
     //Uses the formula v2=2d/t-v1
+    
+    /**
+    * pre: initial y velocity, time, and y displacement
+    * post: final y velocity
+    * Method to return the final y velocity
+    */
     public static double v1ydytOFv2y(double v1y, double dy, double t){
         //Variable to be solved for
         double v2y;
@@ -345,6 +405,12 @@ public abstract class MathMethods {
     
     //Method to solve for the initial velocity given the final velocity, displacement, and time
     //Uses the formula v1=2d/t-v2
+    
+    /**
+    * pre: final y velocity, time, and y displacement
+    * post: initial y velocity
+    * Method to return the initial y velocity
+    */
     public static double v2ydytOFv1y(double v2y, double dy, double t){
         //Variable to be solved for
         double v1y;
@@ -360,48 +426,76 @@ public abstract class MathMethods {
     // BELOW IS USE OF TRIGNOMETRY EQUATIONS
 
     /**
-     * GET THE THETA FROM TWO SIDE COMPONENTIAL LENGTHS
-     * @param v1x
-     * @param v1y
-     * @return theta
-     */ // USING TAN
+    * pre: opposite side, adjacent side
+    * post: theta
+    * Method to return the angle using tan
+    */
     public static double oppAdjOFtheta(double v1x, double v1y){
         return Math.toDegrees(Math.atan(v1y/v1x)); 
     }
 
-    // NOTE FOR ETHAN / JOSH !!!!!!
+
     // JUST USE ANGLE SUM OF A TRIANGLE THEOREM IF YOU NEED TO GET THE ADJ ANGLE IN ANY OF THE NEXT FUNCTIONS
+    
+    /**
+    * pre: opposite side, theta
+    * post: adjacent
+    * Method to return the adjacent side
+    */
     public static double oppThetaOFadj(double opp, double theta){
         return oppAdjOFtheta(opp, 90-theta);
     }
     
+
     /**
-     * USED TO OBTAIN THE OPPOSITE SIDELENGTH 
-     * WITH THETA AND THE AJDACENT SIDELENGTH
-     * @param x
-     * @param theta
-     * @return
-     */ // USING TAN
+    * pre: adjacent side, theta
+    * post: opposite side
+    * Method to return the opposite side using tan
+    */
     public static double adjThetaOFopp(double adj, double theta){
         // RETURN THE y component of the right angle triangle 
         return adj * Math.tan(Math.toRadians(theta));
     }
     
     //USING SIN
+    
+    /**
+    * pre: opposite side, hypotenuse
+    * post: theta
+    * Method to return the angle using sin
+    */
     public static double oppHypOFtheta(double opp, double hyp){
         return Math.toDegrees(Math.asin(opp/hyp));
     }
     //USING SIN
+    
+    /**
+    * pre: opposite side, theta
+    * post: hypotenuse
+    * Method to return the hypotenuse using sine
+    */
     public static double oppThetaOFhyp(double opp, double theta){
         return opp*Math.sin(Math.toRadians(theta));
     }
     
     // USING COS
+    
+    /**
+    * pre: adjacent side, hypotenuse
+    * post: theta
+    * Method to return the angle using cose
+    */
     public static double adjHypOFtheta(double adj, double hyp){
         return Math.toDegrees(Math.acos(adj/hyp));
     }
     
     // USING COS
+    
+    /**
+    * pre: adjacent side, theta
+    * post: hypotenuse
+    * Method to return the hypotenuse using sine
+    */
     public static double adjThetaOFhyp(double adj, double theta){
         return adj*Math.sin(Math.toRadians(theta));
     }
@@ -410,12 +504,10 @@ public abstract class MathMethods {
     // TWO METHODS BELOW ONLY DEAL WITH THE PYTHAGOREAN THEOREM
     
     /**
-     * USE THE PYTHAGOREAN THEOREM TO OBTAIN THE HYPOTENUSE
-     * USEING THE X AND Y COMPONENT OF A RIGHT ANGLE TRIANGLE
-     * @param adj
-     * @param opp
-     * @return Hypotenuse
-     */
+    * pre: opposite side, adjacent side
+    * post: hypotenuse
+    * Method to return the hypotenuse using pythagorean theorem
+    */
     public static double pythagFORHypotenuse(double adj, double opp){
         return Math.sqrt((adj*adj)+(opp*opp)); // using pythagoras' theorem to obtain the hypotenuse
         //Make sure to include theta1 in the final velocity
@@ -423,12 +515,10 @@ public abstract class MathMethods {
     }
     
     /**
-     * USE THE PYTHAGOREAN THEOREM TO OBTAIN A SIDELENGTH
-     * USING HYPOTENUSE AND ANOTHER SIDELENGTH FOR A RIGHT ANGLE TRIANGLE
-     * @param hypotenuse
-     * @param sidelength
-     * @return Other side length
-     */
+    * pre: hypotenuse, and either the adjacent or opposite side
+    * post: the other side length
+    * Method to return either the adjacent or opposite side using pythagorean theorem
+    */
     public static double pythagFORSidelength(double hypotenuse, double sidelength){
         return Math.sqrt((hypotenuse*hypotenuse)-(sidelength*sidelength)); // return the missing sidelength
     }
