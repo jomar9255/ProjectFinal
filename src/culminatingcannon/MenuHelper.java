@@ -18,7 +18,7 @@ public class MenuHelper{
      * avaliable to be used with the selected unknown variable.
      * @param b
      * @param s 
-     */
+     */  
     public void getSolution(JComboBox b, String s){
         MainMenu menu = new MainMenu();
        
@@ -177,12 +177,13 @@ public class MenuHelper{
       */
      public double[] getValues(JTextField[] f){
          double[] values = new double[f.length];
+          String tempStr;
          
          for(int l = 0; l < values.length; l++){
               
              try
              {
-             String tempStr = f[l].getText();
+             tempStr = f[l].getText();
              double tempDbl = Double.parseDouble(tempStr);
              values[l] = tempDbl;
              }
@@ -190,6 +191,7 @@ public class MenuHelper{
              {
                  System.err.println("A Number was entered improperly: " 
                          + e.getMessage());
+                 
              } 
             finally
              {
@@ -542,5 +544,64 @@ public class MenuHelper{
           }
           return s;
       }
+       
+      /**
+       * This method sets each value in varVals to 0
+       */
+  
+      
+       public double[] v1SetValues(double[] d,JTextField[] f, String s){
+        try
+       {
+         switch(s){
+             case "theta1, v1y":
+                 d[9] = Double.parseDouble(f[0].getText());
+                 d[2] = Double.parseDouble(f[1].getText());
+                 break;
+                 
+             case "theta1, v1x":   
+                 d[9] = Double.parseDouble(f[0].getText());
+                 d[1] = Double.parseDouble(f[1].getText());
+                 break;
+             
+             case "v1x, v1y":
+                 enableJTextFields(f,2);
+                 d[1] = Double.parseDouble(f[0].getText());
+                 d[2] = Double.parseDouble(f[1].getText());
+                 break;
+         }
+     }catch(NumberFormatException e){
+            System.err.println("A number was entered incorectly :" + e.getMessage());
+     }
+       return d;
+       }
+          
+       public double[] v2SetValues(double[] d,JTextField[] f, String s){
+        try
+       {
+        switch(s){
+             case "theta2, v2y":
+                 enableJTextFields(f,2);
+                 d[10] = Double.parseDouble(f[0].getText());
+                 d[4] = Double.parseDouble(f[1].getText());
+                 break;
+                 
+             case "theta2, v1x":
+                 enableJTextFields(f,2);
+                 d[10] = Double.parseDouble(f[0].getText());
+                 d[1] = Double.parseDouble(f[1].getText());
+                 break;
+             
+             case "v1x, v2y":
+                 enableJTextFields(f,2);
+                 d[1] = Double.parseDouble(f[0].getText());
+                 d[4] = Double.parseDouble(f[1].getText());
+                 break;
+         }
+     }catch(NumberFormatException e){
+            System.err.println("A number was entered incorectly :" + e.getMessage());
+     }
+       return d;
+       }
 }
  
