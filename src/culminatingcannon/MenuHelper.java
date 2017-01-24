@@ -20,7 +20,7 @@ public class MenuHelper{
      * @param s 
      */  
     public void getSolution(JComboBox b, String s){
-        MainMenu menu = new MainMenu();
+        Menu menu = new Menu();
        
         b.removeAllItems();//removes all of the items in the ComboBox
         
@@ -175,31 +175,7 @@ public class MenuHelper{
       * @param i
       * @return 
       */
-     public double[] getValues(JTextField[] f){
-         double[] values = new double[f.length];
-          String tempStr;
-         
-         for(int l = 0; l < values.length; l++){
-              
-             try
-             {
-             tempStr = f[l].getText();
-             double tempDbl = Double.parseDouble(tempStr);
-             values[l] = tempDbl;
-             }
-             catch(NumberFormatException e)
-             {
-                 System.err.println("A Number was entered improperly: " 
-                         + e.getMessage());
-                 
-             } 
-            finally
-             {
-                  
-             }
-         }
-         return values;
-     }
+    
      public void v1SetVars(JTextField[] f, String s){
          disableJTextFields(f,f.length);
          switch(s){
@@ -296,7 +272,7 @@ public class MenuHelper{
                  break;
          }
      }
-      
+          
       public void v2SetVars(JTextField[] f, String s){
          disableJTextFields(f,f.length);
          switch(s){
@@ -550,7 +526,7 @@ public class MenuHelper{
        */
   
       
-       public double[] v1SetValues(double[] d,JTextField[] f, String s){
+       public double[] v1GetValues(double[] d,JTextField[] f, String s){
         try
        {
          switch(s){
@@ -576,24 +552,21 @@ public class MenuHelper{
        return d;
        }
           
-       public double[] v2SetValues(double[] d,JTextField[] f, String s){
+       public double[] v2GetValues(double[] d,JTextField[] f, String s){
         try
        {
         switch(s){
              case "theta2, v2y":
-                 enableJTextFields(f,2);
                  d[10] = Double.parseDouble(f[0].getText());
                  d[4] = Double.parseDouble(f[1].getText());
                  break;
                  
              case "theta2, v1x":
-                 enableJTextFields(f,2);
                  d[10] = Double.parseDouble(f[0].getText());
                  d[1] = Double.parseDouble(f[1].getText());
                  break;
              
              case "v1x, v2y":
-                 enableJTextFields(f,2);
                  d[1] = Double.parseDouble(f[0].getText());
                  d[4] = Double.parseDouble(f[1].getText());
                  break;
@@ -603,5 +576,252 @@ public class MenuHelper{
      }
        return d;
        }
-}
+       
+       public double[] v1xGetValues(double[] d,JTextField[] f, String s){
+        try
+       {
+       switch(s){
+             case "dx, t":
+                 d[5] = Double.parseDouble(f[0].getText());
+                 d[7] = Double.parseDouble(f[1].getText());
+                 
+                 break;
+                 
+             case "theta1, v1y":
+                 d[9] = Double.parseDouble(f[0].getText());
+                 d[2] = Double.parseDouble(f[1].getText());
+                 break;
+             
+             case "theta2, v2y":
+                 d[10] = Double.parseDouble(f[0].getText());
+                 d[4] = Double.parseDouble(f[1].getText());
+                 break;
+                 
+             case "v1, v1y":
+                 d[0] = Double.parseDouble(f[0].getText());
+                 d[2] = Double.parseDouble(f[1].getText());
+                 break;
+         }
+     }catch(NumberFormatException e){
+            System.err.println("A number was entered incorectly :" + e.getMessage());
+     }
+       return d;
+       }
+       
+        public double[] v1yGetValues(double[] d,JTextField[] f, String s){
+        try
+       {
+        switch(s){
+             case "a, dy, t":
+                 d[8] = Double.parseDouble(f[0].getText());
+                 d[6] = Double.parseDouble(f[1].getText());
+                 d[7] = Double.parseDouble(f[2].getText());
+                 break;
+                 
+             case "a, t, v2y":
+                 d[8] = Double.parseDouble(f[0].getText());
+                 d[7] = Double.parseDouble(f[1].getText());
+                 d[4] = Double.parseDouble(f[2].getText());
+                 break;
+             
+             case "a, dy, v2y":
+                 d[8] = Double.parseDouble(f[0].getText());
+                 d[6] = Double.parseDouble(f[1].getText());
+                 d[4] = Double.parseDouble(f[2].getText());
+                 break;
+                 
+             case "dy, t, v2y":
+                 d[6] = Double.parseDouble(f[0].getText());
+                 d[7] = Double.parseDouble(f[1].getText());
+                 d[4] = Double.parseDouble(f[2].getText());
+                 break;
+                 
+             case "theta1, v1x":
+                 d[9] = Double.parseDouble(f[0].getText());
+                 d[1] = Double.parseDouble(f[1].getText());
+                 break;
+                 
+             case "v1, v1x":
+                 d[0] = Double.parseDouble(f[0].getText());
+                 d[1] = Double.parseDouble(f[1].getText());
+                 break;
+         }
+     }catch(NumberFormatException e){
+            System.err.println("A number was entered incorectly :" + e.getMessage());
+     }
+       return d;
+       }
+   
+        public double[] v2yGetValues(double[] d,JTextField[] f, String s){
+        try
+       {
+            switch(s){
+             case "theta2, v2y":
+                 d[10] = Double.parseDouble(f[0].getText());
+                 d[4] = Double.parseDouble(f[1].getText());
+                 break;
+                 
+             case "theta2, v1x":
+                 d[10] = Double.parseDouble(f[0].getText());
+                 d[1] = Double.parseDouble(f[1].getText());
+                 break;
+             
+             case "v1x, v2y":
+                 d[1] = Double.parseDouble(f[0].getText());
+                 d[4] = Double.parseDouble(f[1].getText());
+                 break;
+            }
+     }catch(NumberFormatException e){
+            System.err.println("A number was entered incorectly :" + e.getMessage());
+     }
+       return d;
+       }
+        
+         public double[] dxGetValues(double[] d,JTextField[] f, String s){
+        try
+       {
+             switch(s){
+             case "t, v1x":
+                 d[7] = Double.parseDouble(f[0].getText());
+                 d[1] = Double.parseDouble(f[1].getText());
+                 break;
+             }
+     }catch(NumberFormatException e){
+            System.err.println("A number was entered incorectly :" + e.getMessage());
+     }
+       return d;
+       }
+        
+          public double[] dyGetValues(double[] d,JTextField[] f, String s){
+         switch(s){
+             case "a, t, v1y":
+                 d[8] = Double.parseDouble(f[0].getText());
+                 d[7] = Double.parseDouble(f[1].getText());
+                 d[3] = Double.parseDouble(f[2].getText());
+                 break;
+                  
+             case "a, t, v2y":
+                 d[8] = Double.parseDouble(f[0].getText());
+                 d[7] = Double.parseDouble(f[1].getText());
+                 d[4] = Double.parseDouble(f[2].getText());
+                 break;
+             
+             case "a, v1y, v2y":
+                 d[8] = Double.parseDouble(f[0].getText());
+                 d[2] = Double.parseDouble(f[1].getText());
+                 d[4] = Double.parseDouble(f[2].getText());
+                 break;
+                 
+             case "t, v1y, v2y":
+                 d[7] = Double.parseDouble(f[0].getText());
+                 d[2] = Double.parseDouble(f[1].getText());
+                 d[4] = Double.parseDouble(f[2].getText());
+                 break;
+         }
+         return d;
+     }
+          
+            public double[] tGetValues(double[] d,JTextField[] f, String s){
+          switch(s){
+             case "dx, v1x":
+                 d[5] = Double.parseDouble(f[0].getText());
+                 d[1] = Double.parseDouble(f[1].getText());
+                 break;
+                 
+             case "a, dy, v1y":
+                 d[8] = Double.parseDouble(f[0].getText());
+                 d[6] = Double.parseDouble(f[1].getText());
+                 d[2] = Double.parseDouble(f[2].getText());
+                 break;
+             
+             case "a, dy, v2y":
+                 d[8] = Double.parseDouble(f[0].getText());
+                 d[6] = Double.parseDouble(f[1].getText());
+                 d[4] = Double.parseDouble(f[2].getText());
+                 break;
+                 
+             case "a, v1y, v2y":
+                 d[8] = Double.parseDouble(f[0].getText());
+                 d[2] = Double.parseDouble(f[1].getText());
+                 d[4] = Double.parseDouble(f[2].getText());
+                 break;
+                 
+             case "dy, v1y, v2y":
+                 d[6] = Double.parseDouble(f[0].getText());
+                 d[2] = Double.parseDouble(f[1].getText());
+                 d[4] = Double.parseDouble(f[2].getText());
+                 break;
+         }
+         return d;
+     }
+            
+        public double[] aGetValues(double[] d,JTextField[] f, String s){
+          switch(s){
+             case "dy, t, v1y":
+                 d[6] = Double.parseDouble(f[0].getText());
+                 d[7] = Double.parseDouble(f[1].getText());
+                 d[2] = Double.parseDouble(f[2].getText());
+                 break;
+                 
+             case "dy, t, v2y":
+                 d[6] = Double.parseDouble(f[0].getText());
+                 d[7] = Double.parseDouble(f[1].getText());
+                 d[4] = Double.parseDouble(f[2].getText());
+                 break;
+             
+             case "t, v1y, v2y":
+                 d[7] = Double.parseDouble(f[0].getText());
+                 d[2] = Double.parseDouble(f[1].getText());
+                 d[4] = Double.parseDouble(f[2].getText());
+                 break;
+                 
+             case "dy, v1y, v2y":
+                 d[6] = Double.parseDouble(f[0].getText());
+                 d[2] = Double.parseDouble(f[1].getText());
+                 d[4] = Double.parseDouble(f[2].getText());
+                 break;
+         }
+         return d;
+     }   
+        
+         public double[] theta1GetValues(double[] d,JTextField[] f, String s){
+          switch(s){
+             case "v1x, v1y":
+                 d[1] = Double.parseDouble(f[0].getText());
+                 d[2] = Double.parseDouble(f[1].getText());
+                 break;
+                 
+             case "v1y, v1":
+                 d[2] = Double.parseDouble(f[0].getText());
+                 d[0] = Double.parseDouble(f[1].getText());
+                 break;
+             
+             case "v1x, v1":
+                 d[1] = Double.parseDouble(f[0].getText());
+                 d[0] = Double.parseDouble(f[1].getText());
+                 break;
+          }
+         return d;
+     }
+         
+          public double[] theta2GetValues(double[] d,JTextField[] f, String s){
+          switch(s){
+             case "v1x, v2y":
+                 d[1] = Double.parseDouble(f[0].getText());
+                 d[4] = Double.parseDouble(f[1].getText());
+                 break;
+                 
+             case "v2y, v2":
+                 d[4] = Double.parseDouble(f[0].getText());
+                 d[3] = Double.parseDouble(f[1].getText());
+                 break;
+             
+             case "v1x, v2":
+                 d[1] = Double.parseDouble(f[0].getText());
+                 d[3] = Double.parseDouble(f[1].getText());
+                 break;
+          }
+         return d; 
+     }    
+} 
  
