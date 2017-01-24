@@ -29,7 +29,7 @@ public class CulminatingCannon {
 
         //Create a new decisionmaker object called awnser
         //Input the users unknown and known variables, the number of variables, and the value of all of them
-        decisionMaker awnser = new decisionMaker(unknownVar, numVar, varName, varValue);
+        decisionMaker awnser = new decisionMaker(unknownVar, varName, varValue);
         
         //Find the users unknown variable and store in solution variable
         solution = awnser.decisionStatements();
@@ -38,6 +38,4 @@ public class CulminatingCannon {
         System.out.println(x.format(solution));
                 
     }
-    
-
 }
