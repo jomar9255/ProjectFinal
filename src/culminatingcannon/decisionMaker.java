@@ -18,15 +18,13 @@ public class decisionMaker extends MathMethods{
     private double v1, v1x, v1y, v2, v2y, dx,
      dy, t, a, theta1, theta2;
     private double awnser;
-    private int num;
     private String unknown, megaString;
     String[] varNameArray = {"v1","v1x","v1y","v2","v2y","dx","dy","t","a","theta1","theta2"};
     
-    //Constructor to set variable values from user input
-    public decisionMaker(String unknownVar, int numVar, String varName, double[] varValue){
+    
+    public decisionMaker(String unknownVar, String varName, double[] varValue){
         
         //Set values for variables
-        num = numVar;
         unknown = unknownVar;
         megaString = varName;
         
@@ -42,13 +40,9 @@ public class decisionMaker extends MathMethods{
         a = varValue[8];
         theta1 = varValue[9];
         theta2 = varValue[10];
+
     } 
     
-    /**
-    * pre: void
-    * post: answer
-    * Method to determine which math method to run in superclass to get answer
-    */
     public double decisionStatements() {
         //Method to check the users unknown variable and to decide which case to run
         //Megastring name contains all the known variables the user has in alphabetical order
