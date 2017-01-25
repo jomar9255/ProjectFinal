@@ -34,17 +34,11 @@ public class VisualAnimatio extends JApplet implements ActionListener, KeyListen
 
     
     public VisualAnimatio(double vx, double accel, double viy, double diy){
-        //Set variable values
-//        x=0;
-//            y=750;
-//            t=0;
-//        
-        
         xVelocity = (int)vx;
         a = accel/2.0;
         b = viy;
         c = diy;
-        
+        init();
     }
     
     
@@ -52,7 +46,7 @@ public class VisualAnimatio extends JApplet implements ActionListener, KeyListen
     *make into a method called init
     *
     */
-    public VisualAnimatio() {
+    public void init() {
         timer = new Timer(100, this); //has the timer run at 60ms per cycle
         timer.start();
         try {//load
