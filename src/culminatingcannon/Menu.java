@@ -18,12 +18,13 @@ public class Menu extends javax.swing.JFrame {
     public Menu() {
         initComponents();
         solveButton.setEnabled(false);
-        varFields = new JTextField[3];
+        varFields = new JTextField[4];
         varFields[0] = varField1; 
         varFields[1] = varField2;
         varFields[2] = varField3;
+        varFields[3] = varField4;
     
-        tools.disableJTextFields(varFields,3);//all JTextFields within the array are setEnabled(false).
+        tools.disableJTextFields(varFields,4);//all JTextFields within the array are setEnabled(false).
     }
 
     /**
@@ -41,8 +42,8 @@ public class Menu extends javax.swing.JFrame {
         varField2 = new javax.swing.JTextField();
         varField3 = new javax.swing.JTextField();
         xVarSelect = new javax.swing.JComboBox();
-        jCheckBox1 = new javax.swing.JCheckBox();
         answerOut = new javax.swing.JTextField();
+        varField4 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,17 +61,10 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        xVarSelect.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "v1", "v1x", "v1y", "v2", "v2y", "dx", "dy","t","a","theta1", "theta2"}));
+        xVarSelect.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "v1", "v1x", "v1y", "v2", "v2y", "dx", "dy","t","a","theta1", "theta2","Animation"}));
         xVarSelect.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 xVarSelectActionPerformed(evt);
-            }
-        });
-
-        jCheckBox1.setText("Generate graph");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
             }
         });
 
@@ -90,14 +84,12 @@ public class Menu extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(varField3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(varField2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(varField1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(varField1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(varField4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(32, 104, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(xVarSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(solutionsBox, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jCheckBox1)))
+                        .addComponent(xVarSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(solutionsBox, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(answerOut, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -114,12 +106,12 @@ public class Menu extends javax.swing.JFrame {
                             .addComponent(solutionsBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(xVarSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jCheckBox1)
-                            .addComponent(varField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(4, 4, 4)
+                        .addComponent(varField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(6, 6, 6)
                 .addComponent(varField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(varField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addComponent(answerOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(solveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -131,6 +123,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void solveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solveButtonActionPerformed
         double[] varVals = new double[11];
+        double[] anim = new double[4];
         String xVar = tools.getSelectedJComboBoxItem(xVarSelect);
         String formula = tools.getSelectedJComboBoxItem(solutionsBox);
        
@@ -168,18 +161,26 @@ public class Menu extends javax.swing.JFrame {
                 break;   
             case "theta2":
                 varVals = tools.theta2GetValues(varVals, varFields, formula);
-                break;       
+                break;
+            case "Animation":
+                genGraph = true;
+                anim = tools.animationGetValues(varVals,varFields);
+                break;
         } 
+         
+         if(genGraph){
+           VisualAnimatio visAnim = new VisualAnimatio(anim[0],anim[1],anim[2],anim[3]);
+           VisualAnimatio.mainmMethodForVisual();
+             genGraph = false;
+         }
+         else{
          decisionMaker dm = new decisionMaker(xVar,tools.format(formula),varVals);
          double ans = dm.decisionStatements();
          answerOut.setText(Double.toString(ans));
-         
-         if(genGraph == true)
-         {
-             //generate graph/animation here
          }
+         
          printArray(varVals);
-    
+            
     }//GEN-LAST:event_solveButtonActionPerformed
 
     private void solutionsBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solutionsBoxActionPerformed
@@ -226,13 +227,17 @@ public class Menu extends javax.swing.JFrame {
             case "a":
                 tools.aSetVars(varFields, item);
                 break;
-                
+                 
             case "theta1":
                 tools.theta1SetVars(varFields, item);
                 break;
                 
             case "theta2":
                 tools.theta2SetVars(varFields, item);
+                break;
+                
+            case "Animation":
+                tools.animationSetVars(varFields);
                 break;
                 
         }      
@@ -244,21 +249,6 @@ public class Menu extends javax.swing.JFrame {
         solutionsBox.setEnabled(true);
         solveButton.setEnabled(true);
     }//GEN-LAST:event_xVarSelectActionPerformed
- /**
-  * toggles the option to generate the graph of a solution.
-  * @param evt 
-  */
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-
-        if(genGraph == false)
-        {
-            genGraph = true;
-        }
-        else
-        {
-            genGraph = false;
-        }    
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -297,12 +287,12 @@ public class Menu extends javax.swing.JFrame {
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField answerOut;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox solutionsBox;
     private javax.swing.JButton solveButton;
     private javax.swing.JTextField varField1;
     private javax.swing.JTextField varField2;
     private javax.swing.JTextField varField3;
+    private javax.swing.JTextField varField4;
     private javax.swing.JComboBox xVarSelect;
     // End of variables declaration//GEN-END:variables
  

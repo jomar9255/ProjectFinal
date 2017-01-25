@@ -23,9 +23,9 @@ public class MenuHelper{
         Menu menu = new Menu();
        
         b.removeAllItems();//removes all of the items in the ComboBox
-        
+        b.setEnabled(true);
          switch(s){
-        
+         
         case "v1":
             b.addItem("theta1, v1y");
             b.addItem("theta1, v1x");
@@ -101,6 +101,8 @@ public class MenuHelper{
             b.addItem("v1x, v2");
                 break;
             
+        case "Animation":
+             b.addItem("vx, a, vyi, inital height");
         default: //condition should never be evaluated
          System.err.print("A variable has been selected that does not exist");
                 break;
@@ -176,6 +178,14 @@ public class MenuHelper{
       * @return 
       */
     
+     public void animationSetVars(JTextField[] f){
+         enableJTextFields(f,f.length);
+         f[0].setText("vx");
+         f[1].setText("a");
+         f[2].setText("vyi");
+         f[3].setText("initial height");
+     }
+     
      public void v1SetVars(JTextField[] f, String s){
          disableJTextFields(f,f.length);
          switch(s){
@@ -822,6 +832,18 @@ public class MenuHelper{
                  break;
           }
          return d; 
-     }    
+     }
+          
+          public double[] animationGetValues(double[] d,JTextField[] f){
+            try{
+              d[1] = Double.parseDouble(f[0].getText());
+              d[2] = Double.parseDouble(f[0].getText());
+              d[3] = Double.parseDouble(f[0].getText());
+              d[4] = Double.parseDouble(f[0].getText());
+            }catch(NumberFormatException e){
+                System.err.println(e.getMessage());
+            }
+            return d;
+          }
 } 
  
