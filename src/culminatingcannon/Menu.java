@@ -170,7 +170,8 @@ public class Menu extends javax.swing.JFrame {
          
          if(genGraph){
            VisualAnimatio visAnim = new VisualAnimatio(anim[0],anim[1],anim[2],anim[3]);
-           VisualAnimatio.mainmMethodForVisual();
+           //VisualAnimatio.mainmMethodForVisual();
+             visAnim.mainMethodForVisual();
              genGraph = false;
          }
          else{
