@@ -48,7 +48,10 @@ public class VisualAnimatio extends JApplet implements ActionListener, KeyListen
     }
     
     
-    
+    /*
+    *make into a method called init
+    *
+    */
     public VisualAnimatio() {
         timer = new Timer(100, this); //has the timer run at 60ms per cycle
         timer.start();
