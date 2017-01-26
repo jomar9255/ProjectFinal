@@ -17,11 +17,10 @@ import javax.swing.JApplet;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
-public class VisualAnimatio extends JApplet implements ActionListener, KeyListener {
+public class VisualAnimatio extends JApplet implements ActionListener, KeyListener{
 
     String[] picz = new String[4]; //Image file location
     Image[] img = new Image[4]; //Image
-
     public static int x, y, t, xVelocity, timeSpeed=1, background = 0, sprite = 3;
     public static double a, b, c; // VARIABLES FOR THE LEADING COEFFICENTS a for acceleration and b for the second coefficent
     Graphics2D myPic;
@@ -38,7 +37,6 @@ public class VisualAnimatio extends JApplet implements ActionListener, KeyListen
         a = accel/2.0;
         b = viy;
         c = diy;
-        init();
     }
     
     
@@ -46,7 +44,7 @@ public class VisualAnimatio extends JApplet implements ActionListener, KeyListen
     *make into a method called init
     *
     */
-    public void init() {
+    public VisualAnimatio() {
         timer = new Timer(100, this); //has the timer run at 60ms per cycle
         timer.start();
         try {//load
@@ -71,9 +69,7 @@ public class VisualAnimatio extends JApplet implements ActionListener, KeyListen
         f.setVisible(true); //makes it visible
         f.setResizable(false);//makes in unsizable
         f.setBounds(0, 0, 1000, 775);//sets the window location on screen and its size
-        f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);    //stops program if you x out of the window    
-
-        
+        f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);    //stops program if you x out of the window
     }
 
     public void paint(Graphics g) {
@@ -81,6 +77,9 @@ public class VisualAnimatio extends JApplet implements ActionListener, KeyListen
         dbg = dbImage.getGraphics();        //double buffers the panel
         paintComponent(dbg); //paints for paintCompontent
         g.drawImage(dbImage, 0, 0, this); //draws the screen image
+        if(y < -200){
+        timer.stop();
+        }
     }
 
     public void paintComponent(Graphics g) {
@@ -91,7 +90,7 @@ public class VisualAnimatio extends JApplet implements ActionListener, KeyListen
         myPic.drawImage(img[sprite], x, -y+700, 50, 50, null);
 
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         // EACH UPDATE
@@ -100,7 +99,6 @@ public class VisualAnimatio extends JApplet implements ActionListener, KeyListen
 //        y = (int)-(5*((1.0/20.0)*t-20)*((1.0/20.0)*t-4)-400);
         
         y=(int) (  b*(t) - a*(t*t)  +c); // THE FUNCTION OF TIME FOR THE y OUTPUT ONLY
-
 
         System.out.println("the x value is x = "+x);
         System.out.println(y);

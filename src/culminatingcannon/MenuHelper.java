@@ -1,21 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/* Authored by Joshua Marquardt
  */
+
 package culminatingcannon;
 
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
 /**
- *
- * @author Joshua
+ * The MenuHelper class is a collection of methods intended to be used by the
+ * Menu class.
+ * @author Joshua Marquardt
  */
 public class MenuHelper{
         /**
      * getSolution(String s) uses a String to evaluate which formulas are 
-     * avaliable to be used with the selected unknown variable.
+     * avaliable to be used with the selected unknown variable. Once a condition
+     * is evaluated, the appropriate formula options will be added to the given
+     * JComboBox
      * @param b
      * @param s 
      */  
@@ -58,7 +59,7 @@ public class MenuHelper{
             b.addItem("a, dy, t");
             b.addItem("a, t, v1y");
             b.addItem("a, dy, v1y");
-            b.addItem("dy,t, v1y");
+            b.addItem("dy, t, v1y");
             b.addItem("theta2, v1x");
             b.addItem("v1x, v2");
                 break;
@@ -103,6 +104,7 @@ public class MenuHelper{
             
         case "Animation":
              b.addItem("vx, a, vyi, inital height");
+             break;
         default: //condition should never be evaluated
          System.err.print("A variable has been selected that does not exist");
                 break;
@@ -111,8 +113,8 @@ public class MenuHelper{
     
     /**
      * disableJTextFields will use an array of JTextFields to set 'a' amount of 
-     * elements to .setEnabled(false). Additionally, any text entered inside a 
-     * JTextField will be cleared.
+     * elements to JTextField.setEnabled(false). Additionally, any text entered 
+     * inside a JTextField will be cleared.
      * @param f
      * @param a 
      */
@@ -171,13 +173,11 @@ public class MenuHelper{
      }
      
      /**
-      * getValues(JTextField[] f, int i) will get the text of every JTextField[]
-      * 'f' element, and will return the Strings as a double[].
-      * @param f
-      * @param i
-      * @return 
+      * animationSetVars uses the JTextField method .setText to place text
+      * inside the appropriate JTextField according to the conditions of a given
+      * formula.
+      * @param f 
       */
-    
      public void animationSetVars(JTextField[] f){
          enableJTextFields(f,f.length);
          f[0].setText("vx");
@@ -186,6 +186,13 @@ public class MenuHelper{
          f[3].setText("initial height");
      }
      
+     /**
+      * v1SetVars uses the JTextField method .setText to place text
+      * inside the appropriate JTextField according to the conditions of a given
+      * formula.
+      * @param f
+      * @param s
+      */
      public void v1SetVars(JTextField[] f, String s){
          disableJTextFields(f,f.length);
          switch(s){
@@ -209,6 +216,13 @@ public class MenuHelper{
          }
      }
      
+     /**
+      * v1xSetVars uses the JTextField method .setText to place text
+      * inside the appropriate JTextField according to the conditions of a given
+      * formula.
+      * @param f
+      * @param s
+      */
      public void v1xSetVars(JTextField[] f, String s){
          disableJTextFields(f,f.length);
          switch(s){
@@ -238,6 +252,13 @@ public class MenuHelper{
          }
      }
      
+     /**
+      * v1ySetVars uses the JTextField method .setText to place text
+      * inside the appropriate JTextField according to the conditions of a given
+      * formula.
+      * @param f
+      * @param s
+      */
      public void v1ySetVars(JTextField[] f, String s){
          disableJTextFields(f,f.length);
          switch(s){
@@ -282,7 +303,14 @@ public class MenuHelper{
                  break;
          }
      }
-          
+         
+     /**
+      * v2SetVars uses the JTextField method .setText to place text
+      * inside the appropriate JTextField according to the conditions of a given
+      * formula.
+      * @param f
+      * @param s
+      */
       public void v2SetVars(JTextField[] f, String s){
          disableJTextFields(f,f.length);
          switch(s){
@@ -306,6 +334,13 @@ public class MenuHelper{
          }
      }
       
+      /**
+      * v2ySetVars uses the JTextField method .setText to place text
+      * inside the appropriate JTextField according to the conditions of a given
+      * formula.
+      * @param f
+      * @param s
+      */
       public void v2ySetVars(JTextField[] f, String s){
          disableJTextFields(f,f.length);
          switch(s){
@@ -351,6 +386,13 @@ public class MenuHelper{
          }
      }
       
+      /**
+      * dxSetVars uses the JTextField method .setText to place text
+      * inside the appropriate JTextField according to the conditions of a given
+      * formula.
+      * @param f
+      * @param s
+      */
       public void dxSetVars(JTextField[] f, String s){
           disableJTextFields(f,f.length);
           switch(s){
@@ -362,6 +404,13 @@ public class MenuHelper{
             }
         }
       
+      /**
+      * dySetVars uses the JTextField method .setText to place text
+      * inside the appropriate JTextField according to the conditions of a given
+      * formula.
+      * @param f
+      * @param s
+      */
       public void dySetVars(JTextField[] f, String s){
          disableJTextFields(f,f.length);
          switch(s){
@@ -395,6 +444,13 @@ public class MenuHelper{
          }
      }
       
+      /**
+      * tSetVars uses the JTextField method .setText to place text
+      * inside the appropriate JTextField according to the conditions of a given
+      * formula.
+      * @param f
+      * @param s
+      */
       public void tSetVars(JTextField[] f, String s){
          disableJTextFields(f,f.length);
          switch(s){
@@ -434,6 +490,13 @@ public class MenuHelper{
          }
      }
       
+      /**
+      * aSetVars uses the JTextField method .setText to place text
+      * inside the appropriate JTextField according to the conditions of a given
+      * formula.
+      * @param f
+      * @param s
+      */
       public void aSetVars(JTextField[] f, String s){
          disableJTextFields(f,f.length);
          switch(s){
@@ -467,6 +530,13 @@ public class MenuHelper{
          }
      }
       
+      /**
+      * theta1SetVars uses the JTextField method .setText to place text
+      * inside the appropriate JTextField according to the conditions of a given
+      * formula.
+      * @param f
+      * @param s
+      */
       public void theta1SetVars(JTextField[] f, String s){
          disableJTextFields(f,f.length);
          switch(s){
@@ -490,6 +560,13 @@ public class MenuHelper{
          }
      }
       
+      /**
+      * theta2SetVars uses the JTextField method .setText to place text
+      * inside the appropriate JTextField according to the conditions of a given
+      * formula.
+      * @param f 
+      * @param s
+      */
       public void theta2SetVars(JTextField[] f, String s){
          disableJTextFields(f,f.length);
          switch(s){
@@ -530,12 +607,18 @@ public class MenuHelper{
           }
           return s;
       }
-       
+
       /**
-       * This method sets each value in varVals to 0
+       * v1GetValues uses the JTextField method .getText() to store the String
+       * input from a given JTextField to the parameter double[] d. What input
+       * gets stored relies on the evaluation of a given formula from the 's'
+       * parameter.
+       * 
+       * @param d
+       * @param f
+       * @param s
+       * @return 
        */
-  
-      
        public double[] v1GetValues(double[] d,JTextField[] f, String s){
         try
        {
@@ -562,6 +645,17 @@ public class MenuHelper{
        return d;
        }
           
+       /**
+       * v2GetValues uses the JTextField method .getText() to store the String
+       * input from a given JTextField to the parameter double[] d. What input
+       * gets stored relies on the evaluation of a given formula from the 's'
+       * parameter.
+       * 
+       * @param d
+       * @param f
+       * @param s
+       * @return 
+       */
        public double[] v2GetValues(double[] d,JTextField[] f, String s){
         try
        {
@@ -587,6 +681,17 @@ public class MenuHelper{
        return d;
        }
        
+       /**
+       * v1xGetValues uses the JTextField method .getText() to store the String
+       * input from a given JTextField to the parameter double[] d. What input
+       * gets stored relies on the evaluation of a given formula from the 's'
+       * parameter.
+       * 
+       * @param d
+       * @param f
+       * @param s
+       * @return 
+       */
        public double[] v1xGetValues(double[] d,JTextField[] f, String s){
         try
        {
@@ -618,6 +723,17 @@ public class MenuHelper{
        return d;
        }
        
+       /**
+       * v1yGetValues uses the JTextField method .getText() to store the String
+       * input from a given JTextField to the parameter double[] d. What input
+       * gets stored relies on the evaluation of a given formula from the 's'
+       * parameter.
+       * 
+       * @param d
+       * @param f
+       * @param s
+       * @return 
+       */
         public double[] v1yGetValues(double[] d,JTextField[] f, String s){
         try
        {
@@ -661,32 +777,68 @@ public class MenuHelper{
      }
        return d;
        }
-   
+        
+        /**
+       * v2yGetValues uses the JTextField method .getText() to store the String
+       * input from a given JTextField to the parameter double[] d. What input
+       * gets stored relies on the evaluation of a given formula from the 's'
+       * parameter.
+       * 
+       * @param d
+       * @param f
+       * @param s
+       * @return 
+       */
         public double[] v2yGetValues(double[] d,JTextField[] f, String s){
         try
        {
             switch(s){
-             case "theta2, v2y":
-                 d[10] = Double.parseDouble(f[0].getText());
-                 d[4] = Double.parseDouble(f[1].getText());
+             case "a, dy, t":
+                 d[8] = Double.parseDouble(f[0].getText());
+                 d[6] = Double.parseDouble(f[1].getText());
+                 d[7] = Double.parseDouble(f[1].getText());
                  break;
                  
-             case "theta2, v1x":
-                 d[10] = Double.parseDouble(f[0].getText());
-                 d[1] = Double.parseDouble(f[1].getText());
+             case "a, t, v1y":
+                 d[8] = Double.parseDouble(f[0].getText());
+                 d[7] = Double.parseDouble(f[1].getText());
+                 d[2] = Double.parseDouble(f[1].getText());
                  break;
              
-             case "v1x, v2y":
+             case "a, dy, v1y":
+                 d[8] = Double.parseDouble(f[0].getText());
+                 d[6] = Double.parseDouble(f[1].getText());
+                 d[2] = Double.parseDouble(f[1].getText());
+                 break;
+                 
+             case "dy, t, v1y":
+                 d[6] = Double.parseDouble(f[0].getText());
+                 d[7] = Double.parseDouble(f[1].getText());
+                 d[2] = Double.parseDouble(f[1].getText());
+                 break;
+                 
+             case "v1x, v2":
                  d[1] = Double.parseDouble(f[0].getText());
-                 d[4] = Double.parseDouble(f[1].getText());
+                 d[3] = Double.parseDouble(f[1].getText());
                  break;
             }
      }catch(NumberFormatException e){
-            System.err.println("A number was entered incorectly :" + e.getMessage());
+            System.err.println(e.getMessage());
      }
        return d;
        }
         
+        /**
+       * dxGetValues uses the JTextField method .getText() to store the String
+       * input from a given JTextField to the parameter double[] d. What input
+       * gets stored relies on the evaluation of a given formula from the 's'
+       * parameter.
+       * 
+       * @param d
+       * @param f
+       * @param s
+       * @return 
+       */
          public double[] dxGetValues(double[] d,JTextField[] f, String s){
         try
        {
@@ -697,13 +849,25 @@ public class MenuHelper{
                  break;
              }
      }catch(NumberFormatException e){
-            System.err.println("A number was entered incorectly :" + e.getMessage());
+            System.err.println(e.getMessage());
      }
        return d;
        }
         
+         /**
+       * dyGetValues uses the JTextField method .getText() to store the String
+       * input from a given JTextField to the parameter double[] d. What input
+       * gets stored relies on the evaluation of a given formula from the 's'
+       * parameter.
+       * 
+       * @param d
+       * @param f
+       * @param s
+       * @return 
+       */
           public double[] dyGetValues(double[] d,JTextField[] f, String s){
-         switch(s){
+              try{
+              switch(s){
              case "a, t, v1y":
                  d[8] = Double.parseDouble(f[0].getText());
                  d[7] = Double.parseDouble(f[1].getText());
@@ -728,11 +892,26 @@ public class MenuHelper{
                  d[4] = Double.parseDouble(f[2].getText());
                  break;
          }
+              }catch(NumberFormatException e){
+                System.err.println(e.getMessage());
+          }
          return d;
      }
           
+          /**
+       * tGetValues uses the JTextField method .getText() to store the String
+       * input from a given JTextField to the parameter double[] d. What input
+       * gets stored relies on the evaluation of a given formula from the 's'
+       * parameter.
+       * 
+       * @param d
+       * @param f
+       * @param s
+       * @return 
+       */
             public double[] tGetValues(double[] d,JTextField[] f, String s){
-          switch(s){
+                try{
+                switch(s){
              case "dx, v1x":
                  d[5] = Double.parseDouble(f[0].getText());
                  d[1] = Double.parseDouble(f[1].getText());
@@ -762,11 +941,26 @@ public class MenuHelper{
                  d[4] = Double.parseDouble(f[2].getText());
                  break;
          }
+          }catch(NumberFormatException e){
+                System.err.println(e.getMessage());
+          }
          return d;
      }
-            
+        
+       /**
+       * aGetValues uses the JTextField method .getText() to store the String
+       * input from a given JTextField to the parameter double[] d. What input
+       * gets stored relies on the evaluation of a given formula from the 's'
+       * parameter.
+       * 
+       * @param d
+       * @param f
+       * @param s
+       * @return 
+       */
         public double[] aGetValues(double[] d,JTextField[] f, String s){
-          switch(s){
+          try{
+            switch(s){
              case "dy, t, v1y":
                  d[6] = Double.parseDouble(f[0].getText());
                  d[7] = Double.parseDouble(f[1].getText());
@@ -791,11 +985,26 @@ public class MenuHelper{
                  d[4] = Double.parseDouble(f[2].getText());
                  break;
          }
-         return d;
+            }catch(NumberFormatException e){
+                System.err.println(e.getMessage());
+          } 
+        return d;
      }   
         
+       /**
+       * theta1GetValues uses the JTextField method .getText() to store the String
+       * input from a given JTextField to the parameter double[] d. What input
+       * gets stored relies on the evaluation of a given formula from the 's'
+       * parameter.
+       * 
+       * @param d
+       * @param f
+       * @param s
+       * @return 
+       */
          public double[] theta1GetValues(double[] d,JTextField[] f, String s){
-          switch(s){
+          try{
+             switch(s){
              case "v1x, v1y":
                  d[1] = Double.parseDouble(f[0].getText());
                  d[2] = Double.parseDouble(f[1].getText());
@@ -811,10 +1020,26 @@ public class MenuHelper{
                  d[0] = Double.parseDouble(f[1].getText());
                  break;
           }
+             }catch(NumberFormatException e){
+                System.err.println(e.getMessage());
+          }
          return d;
+         
      }
          
+       /**
+       * theta2GetValues uses the JTextField method .getText() to store the String
+       * input from a given JTextField to the parameter double[] d. What input
+       * gets stored relies on the evaluation of a given formula from the 's'
+       * parameter.
+       * 
+       * @param d
+       * @param f
+       * @param s
+       * @return 
+       */
           public double[] theta2GetValues(double[] d,JTextField[] f, String s){
+          try{
           switch(s){
              case "v1x, v2y":
                  d[1] = Double.parseDouble(f[0].getText());
@@ -831,9 +1056,18 @@ public class MenuHelper{
                  d[3] = Double.parseDouble(f[1].getText());
                  break;
           }
+          }catch(NumberFormatException e){
+                System.err.println(e.getMessage());
+          }
          return d; 
      }
-          
+          /**
+       * animationGetValues uses the JTextField method .getText() to store the String
+       * input from a given JTextField to the parameter double[] d. 
+       * @param d
+       * @param f
+       * @return 
+       */
           public double[] animationGetValues(double[] d,JTextField[] f){
             try{
               d[1] = Double.parseDouble(f[0].getText());

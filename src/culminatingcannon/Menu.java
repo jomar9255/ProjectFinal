@@ -10,11 +10,12 @@ import javax.swing.JTextField;
  *
  * @author Joshua
  */
-public class Menu extends javax.swing.JFrame {
+class Menu extends javax.swing.JFrame {
 
     JTextField[] varFields;//stores the JTextFields where the user enters their known variables
     MenuHelper tools = new MenuHelper();
-    boolean genGraph = false;
+    boolean genGraph = false;//Used to draw an animation using the VisualAnimatio class
+    
     public Menu() {
         initComponents();
         solveButton.setEnabled(false);
@@ -170,8 +171,7 @@ public class Menu extends javax.swing.JFrame {
          
          if(genGraph){
            VisualAnimatio visAnim = new VisualAnimatio(anim[0],anim[1],anim[2],anim[3]);
-           //VisualAnimatio.mainmMethodForVisual();
-             visAnim.mainMethodForVisual();
+           VisualAnimatio.mainmMethodForVisual();//Can only be run once due to the class' limitations.
              genGraph = false;
          }
          else{
@@ -179,11 +179,16 @@ public class Menu extends javax.swing.JFrame {
          double ans = dm.decisionStatements();
          answerOut.setText(Double.toString(ans));
          }
-         
-         printArray(varVals);
-            
+         printArray(varVals);            
     }//GEN-LAST:event_solveButtonActionPerformed
 
+    /**
+     * solutionsBoxActionPerformed is triggered when the JComboBox solutionsBox 
+     * is clicked. Depending on the unknown variable chosen from the
+     * JComboBox 'xVarSelect', the JTextFields in JTextField[] fields will have
+     * appropriate text assigned to them.
+     * @param evt 
+     */
     private void solutionsBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solutionsBoxActionPerformed
 
         String var = tools.getSelectedJComboBoxItem(xVarSelect);
@@ -244,6 +249,13 @@ public class Menu extends javax.swing.JFrame {
         }      
     }//GEN-LAST:event_solutionsBoxActionPerformed
 
+    /**
+     * xVarSelectActionPerformed will display formulas in the JComboBox 
+     * solutionsBox, depending on the unknown variable chosen from the JComboBox
+     *'xVarSelect'. The method is triggered when an ActionEvent occurs on
+     * xVarSelect.
+     * @param evt 
+     */
     private void xVarSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xVarSelectActionPerformed
         Object o = xVarSelect.getModel().getSelectedItem(); 
         tools.getSolution(solutionsBox, o.toString());
@@ -297,6 +309,11 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JComboBox xVarSelect;
     // End of variables declaration//GEN-END:variables
  
+    /**
+     * Prints out each value of a double array on a new line.
+     * The method is intended for debugging purposes only.
+     * @param d 
+     */
     public void printArray(double[] d){
        for(int i = 0; i < d.length; i++){
            System.out.println(d[i] + " ");
